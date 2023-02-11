@@ -35,16 +35,10 @@ def img_from_prompt(
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     pipe.to(device)
-    if device == "cuda":
-        # pipe.enable_xformers_memory_efficient_attention(attention_op=MemoryEfficientAttentionFlashAttentionOp)
-        torch.cuda.empty_cache()
-        pipe.enable_attention_slicing()
-
     # Generate the image
     generator = torch.Generator(device).manual_seed(seed)
     img: Image = pipe(prompt=prompt, height=height, width=width, guidance_scale=guidance_scale,
                       num_inference_steps=num_inference_steps, generator=generator).images[0]
-
     return img
 
 

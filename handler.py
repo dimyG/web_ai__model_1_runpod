@@ -29,10 +29,17 @@ def handler(event):
     }
     """
     print(event)
+
+    prompt = event['input']['prompt']
+    seed = int(event['input']['seed'])
+    height = int(event['input']['height'])
+    width = int(event['input']['width'])
+    guidance_scale = float(event['input']['guidance_scale'])
+    num_inference_steps = int(event['input']['num_inference_steps'])
+
     # Runpod requirement: If the image is larger than 2MB, store it in a blob store and return an url to it.
-    # image = generate_img(event['input']['prompt'], pipe=pipe_initial)
-    # return image
-    image = img_from_prompt(event['input']['prompt'], pipe_initial, height=256, width=256, guidance_scale=7.5, num_inference_steps=10)
+    image = img_from_prompt(prompt=prompt, pipe=pipe_initial, seed=seed, height=height, width=width,
+                            guidance_scale=guidance_scale, num_inference_steps=num_inference_steps)
     memory_stream = io.BytesIO()
     image.save(memory_stream, format='PNG')  # write the image to memory instead of the disk, and return it from there
     memory_stream.seek(0)

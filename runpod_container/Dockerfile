@@ -8,7 +8,7 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN apt-get update -y
-RUN apt-get install -y binutils libproj-dev gdal-bin vim
+RUN apt-get install -y binutils libproj-dev vim
 
 # These are non essential libraries
 # RUN apt-get install -y net-tools

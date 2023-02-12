@@ -258,6 +258,6 @@ fabric.properties
 # ---- end of jetbrains.gitignore content ----
 
 # ---- custom gitignore content ----
-# ignone ml_models folder and everything within it
-ml_models/
+# we don't ignone ml_models folder. we want to track the models in git with git-lfs
+#ml_models/
 # ---- end custom gitignore content ----

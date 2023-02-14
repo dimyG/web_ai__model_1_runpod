@@ -21,5 +21,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
+          context: .
+          file: ./runpod_container/Dockerfile
           push: true
           tags: dimyg/web_ai_model_1_runpod:latest

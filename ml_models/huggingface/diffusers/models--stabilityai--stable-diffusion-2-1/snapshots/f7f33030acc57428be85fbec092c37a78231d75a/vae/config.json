@@ -1,7 +1,7 @@
 {
   "_class_name": "AutoencoderKL",
-  "_diffusers_version": "0.8.0",
-  "_name_or_path": "stability/stable-diffusion-2/vae",
+  "_diffusers_version": "0.10.0.dev0",
+  "_name_or_path": "./stability/stable-diffusion-2-1/vae",
   "act_fn": "silu",
   "block_out_channels": [
     128,
@@ -20,7 +20,7 @@
   "layers_per_block": 2,
   "norm_num_groups": 32,
   "out_channels": 3,
-  "sample_size": 256,
+  "sample_size": 768,
   "up_block_types": [
     "UpDecoderBlock2D",
     "UpDecoderBlock2D",

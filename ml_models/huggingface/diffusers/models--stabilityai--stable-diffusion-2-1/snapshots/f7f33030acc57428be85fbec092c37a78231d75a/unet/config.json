@@ -1,7 +1,7 @@
 {
   "_class_name": "UNet2DConditionModel",
-  "_diffusers_version": "0.8.0",
-  "_name_or_path": "stability/stable-diffusion-2/unet",
+  "_diffusers_version": "0.10.0.dev0",
+  "_name_or_path": "./stability/stable-diffusion-2-1/unet",
   "act_fn": "silu",
   "attention_head_dim": [
     5,
@@ -32,6 +32,8 @@
   "mid_block_scale_factor": 1,
   "norm_eps": 1e-05,
   "norm_num_groups": 32,
+  "num_class_embeds": null,
+  "only_cross_attention": false,
   "out_channels": 4,
   "sample_size": 96,
   "up_block_types": [
@@ -40,5 +42,6 @@
     "CrossAttnUpBlock2D",
     "CrossAttnUpBlock2D"
   ],
+  "upcast_attention": true,
   "use_linear_projection": true
 }

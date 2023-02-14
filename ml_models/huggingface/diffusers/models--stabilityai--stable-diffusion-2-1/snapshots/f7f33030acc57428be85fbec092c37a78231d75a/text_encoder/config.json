@@ -1,5 +1,5 @@
 {
-  "_name_or_path": "stability/stable-diffusion-2/text_encoder",
+  "_name_or_path": "./stability/stable-diffusion-2-1/text_encoder",
   "architectures": [
     "CLIPTextModel"
   ],
@@ -20,6 +20,6 @@
   "pad_token_id": 1,
   "projection_dim": 512,
   "torch_dtype": "float16",
-  "transformers_version": "4.25.0.dev0",
+  "transformers_version": "4.26.0.dev0",
   "vocab_size": 49408
 }

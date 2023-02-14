@@ -26,6 +26,9 @@ def load_pipeline(model: str = "stabilityai/stable-diffusion-2", revision: str =
     pipe = StableDiffusionPipeline.from_pretrained(
         model, revision=revision, scheduler=scheduler, local_files_only=False, cache_dir=cache_dir,
         return_cached_folder=False, torch_dtype=torch_dtype, use_auth_token=huggingface_access_token)
+    # move the pipeline from RAM to the GPU VRAM if available
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    pipe.to(device)
     return pipe
 
 
@@ -33,9 +36,8 @@ def img_from_prompt(
         prompt: str, pipe, seed: int = 1024, height: int = 256, width: int = 256, guidance_scale: float = 7.5,
         num_inference_steps: int = 10) -> Image:
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    pipe.to(device)
     # Generate the image
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     generator = torch.Generator(device).manual_seed(seed)
     img: Image = pipe(prompt=prompt, height=height, width=width, guidance_scale=guidance_scale,
                       num_inference_steps=num_inference_steps, generator=generator).images[0]

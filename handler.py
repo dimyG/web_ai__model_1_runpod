@@ -68,6 +68,8 @@ def handler(event):
     return encoded_string
 
 
+# todo: watch the source code and restart the server on changes, maybe with supervisord.
+# With this hot reloading you can make changes in the runpod container and see their effect immediately.
 runpod.serverless.start({
     "handler": handler
 })
